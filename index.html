@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Help support Hossam's medical operation. Your donation can make a difference in saving a life.">
+    <meta name="keywords" content="Hossam, medical fund, donation, medical operation, help, support">
+    <title>Fund Hossam - Medical Operation Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .message {
+            background: #f1f8e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            color: #33691e;
+            line-height: 1.6;
+        }
+        .info-section {
+            margin-bottom: 25px;
+        }
+        .info-label {
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-value {
+            color: #999;
+            font-size: 1.2em;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            word-break: break-all;
+        }
+        .info-value:not(:empty) {
+            color: #333;
+        }
+        .bank-logo {
+            max-width: 200px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+        .account-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .bank-logo-inline {
+            max-width: 80px;
+            height: auto;
+            flex-shrink: 0;
+        }
+        .poster {
+            width: 100%;
+            height: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .thank-you {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f8e9;
+            border-radius: 10px;
+            color: #2e7d32;
+            font-style: italic;
+        }
+        .copy-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        .copy-btn:hover {
+            background: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fund Hossam</h1>
+        <p class="subtitle">Campaign to treat Hossam's Retinitis Pigmentosa (RPE65)</p>
+
+        <div class="message">
+            <p>Retinitis Pigmentosa (RPE65) is a genetic condition that deteriorates the light-sensitive cells of the retina, causing progressive vision loss, night blindness, and can lead to complete blindness.</p>
+            <p style="margin-top: 15px;">This Luxturna gene therapy holds the promise to stop or reverse this vision loss. Your contribution, no matter how small, can make a real difference in restoring Hossam's vision and giving hope for a brighter future.</p>
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">IBAN Account</div>
+            <div class="info-value" id="iban">EG900010011000000100072764336</div>
+            <button class="copy-btn" onclick="copyToClipboard('iban')">Copy IBAN</button>
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">SWIFT Code</div>
+            <div class="info-value" id="swift">CIBEEGCX110</div>
+            <button class="copy-btn" onclick="copyToClipboard('swift')">Copy SWIFT</button>
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">Local Account Number</div>
+            <div class="account-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Cib_Logo.svg" alt="CIB Bank Logo" class="bank-logo-inline">
+                <div class="info-value" id="account">100072764336</div>
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('account')">Copy Account Number</button>
+        </div>
+
+        <div class="thank-you">
+            <p>Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.</p>
+        </div>
+
+        <div class="info-section">
+            <img src="resources/poster.jpg" alt="Fund Poster" class="poster">
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
