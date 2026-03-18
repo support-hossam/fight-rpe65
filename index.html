@@ -70,9 +70,25 @@
             border-radius: 8px;
             border: 2px solid #e9ecef;
             word-break: break-all;
+            flex: 1;
         }
         .info-value:not(:empty) {
             color: #333;
+        }
+        .info-value-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .copy-icon {
+            cursor: pointer;
+            color: #4caf50;
+            transition: transform 0.2s, color 0.2s;
+            flex-shrink: 0;
+        }
+        .copy-icon:hover {
+            transform: scale(1.1);
+            color: #388e3c;
         }
         .bank-logo {
             max-width: 200px;
@@ -84,6 +100,10 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            width: 100%;
+        }
+        .account-container .info-value-with-icon {
+            flex: 1;
         }
         .bank-logo-inline {
             max-width: 80px;
@@ -134,23 +154,38 @@
 
         <div class="info-section">
             <div class="info-label">IBAN Account</div>
-            <div class="info-value" id="iban">EG900010011000000100072764336</div>
-            <button class="copy-btn" onclick="copyToClipboard('iban')">Copy IBAN</button>
+            <div class="info-value-with-icon">
+                <div class="info-value" id="iban">EG900010011000000100072764336</div>
+                <svg class="copy-icon" onclick="copyToClipboard('iban')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
         </div>
 
         <div class="info-section">
             <div class="info-label">SWIFT Code</div>
-            <div class="info-value" id="swift">CIBEEGCX110</div>
-            <button class="copy-btn" onclick="copyToClipboard('swift')">Copy SWIFT</button>
+            <div class="info-value-with-icon">
+                <div class="info-value" id="swift">CIBEEGCX110</div>
+                <svg class="copy-icon" onclick="copyToClipboard('swift')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
         </div>
 
         <div class="info-section">
             <div class="info-label">Local Account Number</div>
             <div class="account-container">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Cib_Logo.svg" alt="CIB Bank Logo" class="bank-logo-inline">
-                <div class="info-value" id="account">100072764336</div>
+                <div class="info-value-with-icon">
+                    <div class="info-value" id="account">100072764336</div>
+                    <svg class="copy-icon" onclick="copyToClipboard('account')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </div>
             </div>
-            <button class="copy-btn" onclick="copyToClipboard('account')">Copy Account Number</button>
         </div>
 
         <div class="thank-you">
@@ -166,11 +201,11 @@
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
-                const originalText = btn.textContent;
-                btn.textContent = 'Copied!';
+                const icon = document.querySelector(`svg.copy-icon[onclick="copyToClipboard('${elementId}')"]`);
+                const originalColor = icon.style.color;
+                icon.style.color = '#2e7d32';
                 setTimeout(() => {
-                    btn.textContent = originalText;
+                    icon.style.color = originalColor;
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
