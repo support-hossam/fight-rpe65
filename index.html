@@ -327,6 +327,41 @@
             </div>
         </div>
 
+        <div class="info-section">
+            <div class="info-label" id="fullNameLabel">Full Name</div>
+            <div class="info-value-with-icon">
+                <div class="info-value" id="fullName"></div>
+                <svg class="copy-icon" onclick="copyToClipboard('fullName')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-section">
+                <div class="info-label" id="birthdateLabel">Birthdate</div>
+                <div class="info-value-with-icon">
+                    <div class="info-value" id="birthdate"></div>
+                    <svg class="copy-icon" onclick="copyToClipboard('birthdate')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-label" id="phoneLabel">Phone</div>
+                <div class="info-value-with-icon">
+                    <div class="info-value" id="phone"></div>
+                    <svg class="copy-icon" onclick="copyToClipboard('phone')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
         <div class="thank-you">
             <p id="thankYou">Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.</p>
         </div>
@@ -429,6 +464,9 @@
             document.getElementById('ibanLabel').textContent = t.ibanLabel;
             document.getElementById('swiftLabel').textContent = t.swiftLabel;
             document.getElementById('accountLabel').textContent = t.accountLabel;
+            document.getElementById('birthdateLabel').textContent = t.birthdateLabel;
+            document.getElementById('fullNameLabel').textContent = t.fullNameLabel;
+            document.getElementById('phoneLabel').textContent = t.phoneLabel;
             document.getElementById('disclaimerText').textContent = t.disclaimer;
             document.getElementById('thankYou').textContent = t.thankYou;
             document.getElementById('qaTitle').textContent = t.qaTitle;
@@ -509,9 +547,27 @@
             if (bankingData.localAccount) {
                 document.getElementById('account').textContent = bankingData.localAccount;
             }
+            if (bankingData.birthdate) {
+                document.getElementById('birthdate').textContent = bankingData.birthdate;
+            }
+            if (bankingData.fullName) {
+                document.getElementById('fullName').textContent = bankingData.fullName;
+            }
+            if (bankingData.phone) {
+                document.getElementById('phone').textContent = bankingData.phone;
+            }
 
             // Load and display labels from translations
             const t = translations[currentLang];
+            if (t.birthdateLabel) {
+                document.getElementById('birthdateLabel').textContent = t.birthdateLabel;
+            }
+            if (t.fullNameLabel) {
+                document.getElementById('fullNameLabel').textContent = t.fullNameLabel;
+            }
+            if (t.phoneLabel) {
+                document.getElementById('phoneLabel').textContent = t.phoneLabel;
+            }
         });
     </script>
 </body>
