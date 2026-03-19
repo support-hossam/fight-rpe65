@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: direction 0.3s;
+}
+body[dir="rtl"] {
+    direction: rtl;
+}
+.lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #DCAE59;
+    color: #0a0a0a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.lang-switch:hover {
+    background: #FFFFFF;
+    transform: scale(1.05);
+}
+body[dir="rtl"] .lang-switch {
+    right: 20px;
+    left: auto;
+}
+.container {
+    background: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+}
+h1 {
+    color: #DCAE59;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2.5em;
+}
+.subtitle {
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+.message {
+    background: rgba(220, 174, 89, 0.1);
+    border-left: 4px solid #DCAE59;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+.disclaimer {
+    background: rgba(76, 175, 80, 0.15);
+    border: 2px solid #4CAF50;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #4CAF50;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95em;
+}
+.info-section {
+    margin-bottom: 25px;
+}
+.info-row {
+    display: flex;
+    gap: 15px;
+}
+.info-row .info-section {
+    flex: 1;
+}
+@media (max-width: 600px) {
+    .info-row {
+        flex-direction: column;
+    }
+}
+.info-label {
+    color: #DCAE59;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.info-value {
+    color: #999;
+    font-size: 1.2em;
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #333;
+    word-break: break-all;
+    flex: 1;
+}
+.info-value:not(:empty) {
+    color: #FFFFFF;
+}
+.info-value-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.copy-icon {
+    cursor: pointer;
+    color: #DCAE59;
+    transition: transform 0.2s, color 0.2s;
+    flex-shrink: 0;
+    position: absolute;
+    right: 10px;
+    background: rgba(26, 26, 26, 0.9);
+    padding: 5px;
+    border-radius: 4px;
+}
+body[dir="rtl"] .copy-icon {
+    right: auto;
+    left: 10px;
+}
+.copy-icon:hover {
+    transform: scale(1.1);
+    color: #FFFFFF;
+}
+.bank-logo {
+    max-width: 200px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+.account-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+.account-container .info-value-with-icon {
+    flex: 1;
+}
+.bank-logo-inline {
+    max-width: 80px;
+    height: auto;
+    flex-shrink: 0;
+    background: #333;
+    padding: 10px;
+    border-radius: 8px;
+}
+.poster {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.thank-you {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(220, 174, 89, 0.1);
+    border-radius: 10px;
+    color: #DCAE59;
+    font-style: italic;
+}
+.copy-btn {
+    background: #DCAE59;
+    color: #0a0a0a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+.copy-btn:hover {
+    background: #FFFFFF;
+}
+.qa-section {
+    margin-top: 30px;
+}
+.qa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 20px;
+    background: rgba(220, 174, 89, 0.1);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: background 0.3s;
+}
+.qa-header:hover {
+    background: rgba(220, 174, 89, 0.2);
+}
+.qa-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #DCAE59;
+}
+.qa-toggle-icon {
+    transition: transform 0.3s;
+}
+.qa-toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+.qa-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.qa-content.expanded {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+}
+.qa-item {
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.qa-question {
+    padding: 15px 20px;
+    background: #2a2a2a;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #FFFFFF;
+    transition: background 0.3s;
+}
+.qa-question:hover {
+    background: #333;
+}
+.qa-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background: #1a1a1a;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+.qa-answer.expanded {
+    padding: 15px 20px;
+    max-height: 500px;
+    transition: max-height 0.5s ease-in, padding 0.3s ease-in;
+}
+.qa-arrow {
+    transition: transform 0.3s;
+    color: #DCAE59;
+}
+.qa-arrow.rotated {
+    transform: rotate(180deg);
+}
+.instapay-section {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.instapay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 20px;
+    background: rgba(220, 174, 89, 0.1);
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+.instapay-header:hover {
+    background: rgba(220, 174, 89, 0.2);
+}
+.instapay-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #DCAE59;
+}
+.instapay-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.instapay-toggle-icon {
+    transition: transform 0.3s;
+}
+.instapay-toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+.instapay-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.instapay-content.expanded {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+}
+.instapay-steps {
+    padding: 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.instapay-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+.instapay-step:last-child {
+    border-bottom: none;
+}
+.instapay-step-number {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background: #DCAE59;
+    color: #0a0a0a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+.instapay-step-text {
+    flex: 1;
+}
