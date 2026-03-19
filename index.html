@@ -427,6 +427,16 @@
                 </svg>
             </div>
         </div>
+        <div class="info-section">
+            <div class="info-label" id="addressLabel">Address</div>
+            <div class="info-value-with-icon">
+                <div class="info-value" id="address">Nasr City, Cairo, Egypt</div>
+                <svg class="copy-icon" onclick="copyToClipboard('address')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
+        </div>
 
         <div class="info-row">
             <div class="info-section">
@@ -570,6 +580,7 @@
             document.getElementById('accountLabel').textContent = t.accountLabel;
             document.getElementById('birthdateLabel').textContent = t.birthdateLabel;
             document.getElementById('fullNameLabel').textContent = t.fullNameLabel;
+            document.getElementById('addressLabel').textContent = t.addressLabel;
             document.getElementById('phoneLabel').textContent = t.phoneLabel;
             document.getElementById('disclaimerText').textContent = t.disclaimer;
             document.getElementById('thankYou').textContent = t.thankYou;
