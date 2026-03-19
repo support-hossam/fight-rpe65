@@ -6,7 +6,7 @@
     <meta name="description" content="Help support Hossam's medical operation. Your donation can make a difference in saving a life.">
     <meta name="keywords" content="Hossam, medical fund, donation, medical operation, help, support">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DCAE59'%3E%3Cpath d='M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'/%3E%3C/svg%3E">
-    <title>Fund Hossam - Medical Operation Support</title>
+    <title id="pageTitle">Fund Hossam - Medical Operation Support</title>
     <style>
         * {
             margin: 0;
@@ -21,6 +21,33 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            transition: direction 0.3s;
+        }
+        body[dir="rtl"] {
+            direction: rtl;
+        }
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #DCAE59;
+            color: #0a0a0a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .lang-switch:hover {
+            background: #FFFFFF;
+            transform: scale(1.05);
+        }
+        body[dir="rtl"] .lang-switch {
+            right: 20px;
+            left: auto;
         }
         .container {
             background: #1a1a1a;
@@ -225,17 +252,20 @@
     </style>
 </head>
 <body>
+    <button class="lang-switch" onclick="toggleLanguage()" aria-label="Toggle Language">
+        <span id="langText">EN</span>
+    </button>
     <div class="container">
-        <h1>Fund Hossam</h1>
-        <p class="subtitle">Campaign to treat Hossam's Retinitis Pigmentosa (RPE65)</p>
+        <h1 id="mainHeading">Support Hossam</h1>
+        <p class="subtitle" id="subtitle">Campaign to treat Hossam's Retinitis Pigmentosa (RPE65)</p>
 
         <div class="message">
-            <p>Retinitis Pigmentosa (RPE65) is a genetic condition that deteriorates the light-sensitive cells of the retina, causing progressive vision loss, night blindness, and can lead to complete blindness.</p>
-            <p style="margin-top: 15px;">This Luxturna gene therapy holds the promise to stop or reverse this vision loss. Your contribution, no matter how small, can make a real difference in restoring Hossam's vision and giving hope for a brighter future.</p>
+            <p id="message1">Retinitis Pigmentosa (RPE65) is a genetic condition that deteriorates the light-sensitive cells of the retina, causing progressive vision loss, night blindness, and can lead to complete blindness.</p>
+            <p style="margin-top: 15px;" id="message2">This Luxturna gene therapy holds the promise to stop or reverse this vision loss. Your contribution, no matter how small, can make a real difference in restoring Hossam's vision and giving hope for a brighter future.</p>
         </div>
 
         <div class="info-section">
-            <div class="info-label">IBAN Account</div>
+            <div class="info-label" id="ibanLabel">IBAN Account</div>
             <div class="info-value-with-icon">
                 <div class="info-value" id="iban"></div>
                 <svg class="copy-icon" onclick="copyToClipboard('iban')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -246,7 +276,7 @@
         </div>
 
         <div class="info-section">
-            <div class="info-label">SWIFT Code</div>
+            <div class="info-label" id="swiftLabel">SWIFT Code</div>
             <div class="info-value-with-icon">
                 <div class="info-value" id="swift"></div>
                 <svg class="copy-icon" onclick="copyToClipboard('swift')" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -257,7 +287,7 @@
         </div>
 
         <div class="info-section">
-            <div class="info-label">Local Account Number</div>
+            <div class="info-label" id="accountLabel">Local Account Number</div>
             <div class="account-container">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Cib_Logo.svg" alt="CIB Bank Logo" class="bank-logo-inline">
                 <div class="info-value-with-icon">
@@ -271,7 +301,7 @@
         </div>
 
         <div class="thank-you">
-            <p>Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.</p>
+            <p id="thankYou">Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.</p>
         </div>
 
         <div class="info-section">
@@ -280,7 +310,7 @@
 
         <div class="qa-section">
             <div class="qa-header" onclick="toggleQASection()">
-                <span class="qa-title">Frequently Asked Questions</span>
+                <span class="qa-title" id="qaTitle">Frequently Asked Questions</span>
                 <svg class="qa-toggle-icon" id="qaToggleIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
@@ -306,27 +336,83 @@
             });
         }
 
-        // Load Q&A data from JSON file
-        async function loadQAData() {
-            try {
-                const response = await fetch('resources/qa.json');
-                const data = await response.json();
-                return data.questions;
-            } catch (error) {
-                console.error('Error loading Q&A data:', error);
-                return [];
-            }
+        // Load Q&A data from translations
+        function getQAData() {
+            return translations[currentLang].qa || [];
         }
 
         // Load banking data from JSON file
         async function loadBankingData() {
             try {
-                const response = await fetch('resources/banking.json');
+                const response = await fetch('./resources/banking.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
                 const data = await response.json();
                 return data;
             } catch (error) {
                 console.error('Error loading banking data:', error);
-                return {};
+                // Fallback data
+                return {
+                    iban: "EG900010011000000100072764336",
+                    swift: "CIBEEGCX110",
+                    localAccount: "100072764336"
+                };
+            }
+        }
+
+        // Load translations from JSON file
+        async function loadTranslations() {
+            try {
+                const response = await fetch('./resources/translations.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error loading translations:', error);
+                return { en: {}, ar: {} };
+            }
+        }
+
+        // Toggle language between English and Arabic
+        let currentLang = 'en';
+        let translations = { en: {}, ar: {} };
+
+        async function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const body = document.body;
+            const lang = currentLang;
+            const t = translations[lang];
+
+            // Toggle language text
+            const langText = document.getElementById('langText');
+            langText.textContent = lang === 'ar' ? 'AR' : 'EN';
+
+            // Update page direction
+            body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            // Update all text elements
+            document.getElementById('pageTitle').textContent = t.title;
+            document.getElementById('mainHeading').textContent = t.heading;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('message1').textContent = t.message1;
+            document.getElementById('message2').textContent = t.message2;
+            document.getElementById('ibanLabel').textContent = t.ibanLabel;
+            document.getElementById('swiftLabel').textContent = t.swiftLabel;
+            document.getElementById('accountLabel').textContent = t.accountLabel;
+            document.getElementById('thankYou').textContent = t.thankYou;
+            document.getElementById('qaTitle').textContent = t.qaTitle;
+
+            // Re-render Q&A items with new language
+            renderQAItems(getQAData());
+
+            // Update font family for Arabic
+            if (lang === 'ar') {
+                body.style.fontFamily = '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif';
+            } else {
+                body.style.fontFamily = 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
             }
         }
 
@@ -338,17 +424,22 @@
             questions.forEach((item, index) => {
                 const qaItem = document.createElement('div');
                 qaItem.className = 'qa-item';
-                qaItem.innerHTML = `
-                    <div class="qa-question" onclick="toggleAnswer(${index})">
-                        <span>${item.question}</span>
-                        <svg class="qa-arrow" id="arrow-${index}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <div class="qa-answer" id="answer-${index}">
-                        ${item.answer}
-                    </div>
-                `;
+                
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'qa-question';
+                questionDiv.innerHTML = `<span>${item.question}</span>
+                    <svg class="qa-arrow" id="arrow-${index}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>`;
+                questionDiv.addEventListener('click', () => toggleAnswer(index));
+                
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'qa-answer';
+                answerDiv.id = `answer-${index}`;
+                answerDiv.textContent = item.answer;
+                
+                qaItem.appendChild(questionDiv);
+                qaItem.appendChild(answerDiv);
                 qaList.appendChild(qaItem);
             });
         }
@@ -373,8 +464,11 @@
 
         // Initialize Q&A section on page load
         document.addEventListener('DOMContentLoaded', async () => {
-            const questions = await loadQAData();
-            renderQAItems(questions);
+            // Load translations
+            translations = await loadTranslations();
+
+            // Render Q&A items with initial language
+            renderQAItems(getQAData());
 
             const bankingData = await loadBankingData();
             if (bankingData.iban) {

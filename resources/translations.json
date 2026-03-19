@@ -1,0 +1,70 @@
+{
+  "en": {
+    "title": "Support Hossam - Medical Operation Support",
+    "heading": "Support Hossam",
+    "subtitle": "Campaign to treat Hossam's Retinitis Pigmentosa (RPE65)",
+    "message1": "Retinitis Pigmentosa (RPE65) is a genetic condition that deteriorates the light-sensitive cells of the retina, causing progressive vision loss, night blindness, and can lead to complete blindness.",
+    "message2": "This Luxturna gene therapy holds the promise to stop or reverse this vision loss. Your contribution, no matter how small, can make a real difference in restoring Hossam's vision and giving hope for a brighter future.",
+    "ibanLabel": "IBAN Account",
+    "swiftLabel": "SWIFT Code",
+    "accountLabel": "Local Account Number",
+    "thankYou": "Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.",
+    "qaTitle": "Frequently Asked Questions",
+    "qa": [
+      {
+        "question": "What is Retinitis Pigmentosa (RPE65)?",
+        "answer": "Retinitis Pigmentosa (RPE65) is a genetic condition that affects the retina, the light-sensitive tissue at the back of the eye. It causes progressive vision loss, starting with night blindness and peripheral vision loss, which can eventually lead to complete blindness."
+      },
+      {
+        "question": "What is the Luxturna gene therapy?",
+        "answer": "Luxturna is a groundbreaking gene therapy treatment designed to treat inherited retinal diseases caused by mutations in the RPE65 gene. It works by delivering a normal copy of the RPE65 gene directly to the retina, potentially restoring vision or preventing further deterioration."
+      },
+      {
+        "question": "How can I make a donation?",
+        "answer": "You can make a donation by transferring funds to the provided IBAN account (EG900010011000000100072764336) using the SWIFT code CIBEEGCX110. Alternatively, you can use the local account number 100072764336 for domestic transfers."
+      },
+      {
+        "question": "Is my donation tax-deductible?",
+        "answer": "Please consult with your local tax advisor regarding the tax-deductibility of your donation, as regulations vary by country and jurisdiction."
+      },
+      {
+        "question": "How will the funds be used?",
+        "answer": "All donated funds will be used exclusively for Hossam's medical treatment, including the Luxturna gene therapy procedure, hospital fees, medications, and any necessary follow-up care."
+      }
+    ]
+  },
+  "ar": {
+    "title": "أدعم حسام - دعم العملية الطبية",
+    "heading": "دعم حسام",
+    "subtitle": "حملة لعلاج تنكس الشبكية الوراثي عند حسام (RPE65)",
+    "message1": "تنكس الشبكية الوراثي (RPE65) هو حالة وراثية تؤدي إلى تدهور الخلايا الحساسة للضوء في الشبكية، مما يسبب فقدان البصر التدريجي، والعشى الليلي، ويمكن أن يؤدي إلى العمى الكامل.",
+    "message2": "يعد علاج لوكسترنا الجيني وعداً بإيقاف أو عكس فقدان البصر هذا. يمكن لمساهمتك، مهما كانت صغيرة، أن تحدث فرقاً حقيقياً في استعادة بصر حسام ومنحه الأمل في مستقبل أكثر إشراقاً.",
+    "ibanLabel": "رقم الآيبان",
+    "swiftLabel": "رمز سويفت",
+    "accountLabel": "رقم الحساب المحلي",
+    "thankYou": "شكراً لدعمكم وكرمكم. كل مساهمة تقربنا أكثر من استعادة بصر حسام ومنحه مستقبلاً أكثر إشراقاً.",
+    "qaTitle": "الأسئلة الشائعة",
+    "qa": [
+      {
+        "question": "ما هو تنكس الشبكية الوراثي (RPE65)؟",
+        "answer": "تنكس الشبكية الوراثي (RPE65) هو حالة وراثية تؤثر على الشبكية، وهي النسيج الحساس للضوء في الجزء الخلفي من العين. يسبب فقدان البصر التدريجي، بدءاً من العشى الليلي وفقدان البصر المحيطي، مما يمكن أن يؤدي في النهاية إلى العمى الكامل."
+      },
+      {
+        "question": "ما هو علاج لوكسترنا الجيني؟",
+        "answer": "لوكسترنا هو علاج جيني رائد مصمم لعلاج أمراض الشبكية الوراثية الناجمة عن طفرات في جين RPE65. يعمل عن طريق تسليم نسخة طبيعية من جين RPE65 مباشرة إلى الشبكية، مما قد يعيد البصر أو يمنع المزيد من التدهور."
+      },
+      {
+        "question": "كيف يمكنني تقديم تبرع؟",
+        "answer": "يمكنك تقديم تبرع عن طريق تحويل الأموال إلى حساب الآيبان المقدم (EG900010011000000100072764336) باستخدام رمز سويفت CIBEEGCX110. بدلاً من ذلك، يمكنك استخدام رقم الحساب المحلي 100072764336 للتحويلات المحلية."
+      },
+      {
+        "question": "هل تبرعي معفى من الضرائب؟",
+        "answer": "يرجى استشارة مستشار الضرائب المحلي الخاص بك فيما يتعلق بالإعفاء الضريبي لتبرعك، حيث تختلف اللوائح حسب البلد والولاية القضائية."
+      },
+      {
+        "question": "كيف سيتم استخدام الأموال؟",
+        "answer": "سيتم استخدام جميع الأموال المتبرع بها حصرياً لعلاج حسام الطبي، بما في ذلك إجراء علاج لوكسترنا الجيني، ورسوم المستشفى، والأدوية، وأي رعاية متابعة ضرورية."
+      }
+    ]
+  }
+}
