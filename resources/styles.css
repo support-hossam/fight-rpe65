@@ -62,9 +62,21 @@ h1 {
     height: 50px;
     object-fit: contain;
     filter: brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(578%) hue-rotate(354deg) brightness(96%) contrast(87%);
+    flex-shrink: 0;
+}
+.heading-icon-left {
+    /* Left icon - no flip */
 }
 .heading-icon-right {
+    /* Right icon - flipped horizontally */
     transform: scaleX(-1);
+}
+/* Ensure icons stay on correct sides in RTL mode */
+body[dir="rtl"] .heading-icon-left {
+    transform: scaleX(-1);
+}
+body[dir="rtl"] .heading-icon-right {
+    transform: scaleX(1);
 }
 .subtitle {
     text-align: center;

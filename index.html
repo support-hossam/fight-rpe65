@@ -15,7 +15,7 @@
     </button>
     <div class="container">
         <h1 id="mainHeading">
-            <img src="resources/eye-icon.png" alt="Eye Icon" class="heading-icon">
+            <img src="resources/eye-icon.png" alt="Eye Icon" class="heading-icon heading-icon-left">
             <span>Support Hossam</span>
             <img src="resources/eye-icon.png" alt="Eye Icon" class="heading-icon heading-icon-right">
         </h1>
@@ -220,7 +220,7 @@
 
             // Update all text elements
             document.getElementById('pageTitle').textContent = t.title;
-            document.getElementById('mainHeading').textContent = t.heading;
+            document.querySelector('#mainHeading span').textContent = t.heading;
             document.getElementById('subtitle').textContent = t.subtitle;
             document.getElementById('message1').textContent = t.message1;
             document.getElementById('message2').textContent = t.message2;
