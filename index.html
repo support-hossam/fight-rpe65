@@ -130,12 +130,22 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            position: relative;
         }
         .copy-icon {
             cursor: pointer;
             color: #DCAE59;
             transition: transform 0.2s, color 0.2s;
             flex-shrink: 0;
+            position: absolute;
+            right: 10px;
+            background: rgba(26, 26, 26, 0.9);
+            padding: 5px;
+            border-radius: 4px;
+        }
+        body[dir="rtl"] .copy-icon {
+            right: auto;
+            left: 10px;
         }
         .copy-icon:hover {
             transform: scale(1.1);
@@ -272,6 +282,86 @@
         .qa-arrow.rotated {
             transform: rotate(180deg);
         }
+        .instapay-section {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .instapay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px 20px;
+            background: rgba(220, 174, 89, 0.1);
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .instapay-header:hover {
+            background: rgba(220, 174, 89, 0.2);
+        }
+        .instapay-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #DCAE59;
+        }
+        .instapay-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .instapay-toggle-icon {
+            transition: transform 0.3s;
+        }
+        .instapay-toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+        .instapay-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .instapay-content.expanded {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .instapay-steps {
+            padding: 20px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .instapay-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+        .instapay-step:last-child {
+            border-bottom: none;
+        }
+        .instapay-step-number {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background: #DCAE59;
+            color: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        .instapay-step-text {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -362,6 +452,21 @@
             </div>
         </div>
 
+        <div class="instapay-section">
+            <div class="instapay-header" onclick="toggleInstapaySection()">
+                <span class="instapay-title">
+                    <img src="resources/instapay.svg" alt="InstaPay Logo" class="instapay-logo">
+                    <span id="instapayTitle">InstaPay Transfer Guide</span>
+                </span>
+                <svg class="instapay-toggle-icon" id="instapayToggleIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="instapay-content" id="instapayContent">
+                <div class="instapay-steps" id="instapaySteps"></div>
+            </div>
+        </div>
+
         <div class="thank-you">
             <p id="thankYou">Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.</p>
         </div>
@@ -388,11 +493,10 @@
             const text = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text).then(() => {
                 const icon = document.querySelector(`svg.copy-icon[onclick="copyToClipboard('${elementId}')"]`);
-                const originalColor = icon.style.color;
                 icon.style.color = '#FFFFFF';
                 setTimeout(() => {
-                    icon.style.color = originalColor;
-                }, 2000);
+                    icon.style.color = '';
+                }, 200);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
             });
@@ -470,9 +574,15 @@
             document.getElementById('disclaimerText').textContent = t.disclaimer;
             document.getElementById('thankYou').textContent = t.thankYou;
             document.getElementById('qaTitle').textContent = t.qaTitle;
+            document.getElementById('instapayTitle').textContent = t.instapayTitle;
 
             // Re-render Q&A items with new language
             renderQAItems(getQAData());
+
+            // Re-render InstaPay steps with new language
+            if (t.instapay) {
+                renderInstapaySteps(t.instapay);
+            }
 
             // Update font family for Arabic
             if (lang === 'ar') {
@@ -528,6 +638,31 @@
             icon.classList.toggle('rotated');
         }
 
+        // Toggle InstaPay section
+        function toggleInstapaySection() {
+            const content = document.getElementById('instapayContent');
+            const icon = document.getElementById('instapayToggleIcon');
+
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+
+        // Render InstaPay steps
+        function renderInstapaySteps(steps) {
+            const instapaySteps = document.getElementById('instapaySteps');
+            instapaySteps.innerHTML = '';
+
+            steps.forEach((step) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'instapay-step';
+                stepDiv.innerHTML = `
+                    <div class="instapay-step-number">${step.step}</div>
+                    <div class="instapay-step-text">${step.text}</div>
+                `;
+                instapaySteps.appendChild(stepDiv);
+            });
+        }
+
         // Initialize Q&A section on page load
         document.addEventListener('DOMContentLoaded', async () => {
             // Load translations
@@ -535,6 +670,15 @@
 
             // Render Q&A items with initial language
             renderQAItems(getQAData());
+
+            // Render InstaPay steps with initial language
+            const t = translations[currentLang];
+            if (t.instapay) {
+                renderInstapaySteps(t.instapay);
+            }
+            if (t.instapayTitle) {
+                document.getElementById('instapayTitle').textContent = t.instapayTitle;
+            }
 
             // Load and display banking data
             const bankingData = await loadBankingData();
@@ -558,7 +702,6 @@
             }
 
             // Load and display labels from translations
-            const t = translations[currentLang];
             if (t.birthdateLabel) {
                 document.getElementById('birthdateLabel').textContent = t.birthdateLabel;
             }

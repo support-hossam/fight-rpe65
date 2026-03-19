@@ -14,6 +14,37 @@
     "disclaimer": "✓ Official Campaign - Licensed by Egyptian Ministry of Solidarity (Decision 200 of 2026)",
     "thankYou": "Thank you for your support and generosity. Every contribution brings us closer to restoring Hossam's vision and giving him a brighter future.",
     "qaTitle": "Frequently Asked Questions",
+    "instapayTitle": "InstaPay Transfer Guide",
+    "instapay": [
+      {
+        "step": "1",
+        "text": "Open the InstaPay app"
+      },
+      {
+        "step": "2",
+        "text": "Select a bank account"
+      },
+      {
+        "step": "3",
+        "text": "Select CIB bank"
+      },
+      {
+        "step": "4",
+        "text": "Enter account number: 100072764336"
+      },
+      {
+        "step": "5",
+        "text": "Enter name: Hossam Hassan Mohamed Hassan"
+      },
+      {
+        "step": "6",
+        "text": "Enter the amount"
+      },
+      {
+        "step": "7",
+        "text": "Press confirm transfer"
+      }
+    ],
     "qa": [
       {
         "question": "Is the campaign legally licensed?",
@@ -52,6 +83,37 @@
     "disclaimer": "✓ حملة رسمية - مرخصة من وزارة التضامن المصري (قرار ٢٠٠ لسنة ٢٠٢٦)",
     "thankYou": "شكراً لدعمكم وكرمكم. كل مساهمة تقربنا أكثر من استعادة بصر حسام ومنحه مستقبلاً أكثر إشراقاً.",
     "qaTitle": "الأسئلة الشائعة",
+    "instapayTitle": "دليل التحويل عبر InstaPay",
+    "instapay": [
+      {
+        "step": "1",
+        "text": "افتح تطبيق InstaPay"
+      },
+      {
+        "step": "2",
+        "text": "اختر حساب بنكي"
+      },
+      {
+        "step": "3",
+        "text": "اختر بنك CIB"
+      },
+      {
+        "step": "4",
+        "text": "أدخل رقم الحساب: 100072764336"
+      },
+      {
+        "step": "5",
+        "text": "أدخل الاسم: حسام حسن محمد حسن"
+      },
+      {
+        "step": "6",
+        "text": "أدخل المبلغ"
+      },
+      {
+        "step": "7",
+        "text": "اضغط تأكيد التحويل"
+      }
+    ],
     "qa": [
       {
         "question": "هل الحملة مرخصة قانونياً؟",
