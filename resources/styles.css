@@ -103,16 +103,7 @@ body[dir="rtl"] .heading-icon-right {
     color: #4CAF50;
     font-weight: 600;
     text-align: center;
-    font-size: 1.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-.disclaimer-icon {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
+    font-size: 0.95em;
 }
 .info-section {
     margin-bottom: 25px;
