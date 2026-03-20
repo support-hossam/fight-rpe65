@@ -178,11 +178,10 @@
                 return data;
             } catch (error) {
                 console.error('Error loading banking data:', error);
-                // Fallback data
                 return {
-                    iban: "EG900010011000000100072764336",
-                    swift: "CIBEEGCX110",
-                    localAccount: "100072764336"
+                    iban: "Error loading data",
+                    swift: "Error loading data",
+                    localAccount: "Error loading data"
                 };
             }
         }
